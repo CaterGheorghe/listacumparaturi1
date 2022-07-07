@@ -1,0 +1,1 @@
+web:gunicorn lista_cumparaturi.wsgi
