@@ -1,5 +1,5 @@
 """
-WSGI config for lista_cumparaturi project.
+WSGI config for listacumparaturi1 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lista_cumparaturi.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'listacumparaturi1.settings')
 
 application = get_wsgi_application()
