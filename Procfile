@@ -1,1 +1,1 @@
-web:gunicorn lista_cumparaturi.wsgi
+web:gunicorn listacumparaturi1.wsgi
