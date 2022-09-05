@@ -38,6 +38,13 @@
     </table>
     <form method="POST">
         {% csrf_token %}
+        {% if messages %}
+         <ul class="alert alert-danger" style="list-style: none;">
+              {% for message in messages %}
+              <li>{% if message.tags %} {% endif %}{{ message }}</li>
+              {% endfor %}
+         </ul>
+{% endif %}
         {{form.as_p}}
 <!--      <div class="mb-3">-->
 <!--        <label class="form-label">Produs</label>-->

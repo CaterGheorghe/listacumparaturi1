@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Products
 from .forms import ProductsForm
-
+from django.contrib import messages
 # products = [
 #     {
 #         'id': 1,
@@ -25,17 +25,21 @@ def home(request):
     # return HttpResponse('<h2>Aici va fi lista de produse</h2>')
     if request.method == 'POST':
         form = ProductsForm(request.POST or None)
-        if form.is_valid():
+        if form.is_valid() :
             form.save()
             form = ProductsForm()
             products = Products.objects.all()
-            context = {'form': form, 'products':products}
+            context = {'form': form, 'products': products}
             return render(request, 'produse/home.html', context)
+        else:
+            messages.error(request,"Produsul a fost deja adaugat !")
+            return redirect('home')
     else:
         form = ProductsForm()
         products = Products.objects.all()
         context = {'form': form, 'products': products}
         return render(request, 'produse/home.html', context)
+
 
 def delete(reguest, id):
     product = Products.objects.get(pk=id)

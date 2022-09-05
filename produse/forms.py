@@ -12,3 +12,11 @@ class ProductsForm(forms.ModelForm):
     class Meta:
         model = Products
         fields = ['product']
+
+    def clean_product(self):
+        product = self.cleaned_data.get('product')
+        if not product:
+            raise forms.ValidationError('This field is required')
+        return product
+
+
